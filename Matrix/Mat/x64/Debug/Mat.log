@@ -1,0 +1,4 @@
+﻿  Mat.cpp
+C:\Users\rkddl\OneDrive\바탕 화면\Mat\Mat\MuSoenMath.h(27,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'mat3' 왼쪽은 무시됩니다.
+C:\Users\rkddl\OneDrive\바탕 화면\Mat\Mat\MuSoenMath.h(47,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'vec3' 왼쪽은 무시됩니다.
+  Mat.vcxproj -> C:\Users\rkddl\OneDrive\바탕 화면\Mat\x64\Debug\Mat.exe
