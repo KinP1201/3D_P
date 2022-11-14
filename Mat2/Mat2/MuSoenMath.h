@@ -54,54 +54,77 @@ typedef struct mat4{
 };
 
 typedef struct vec3{
-	float vec[3];
+	float vec[3][1];
     float transpose[1][3];
 
-    vec3(float v[3]){
-        for (int i = 0; i < 3; i++) vec[i] = v[i];
+    vec3(float v[3][1]) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 1; j++) vec[i][j] = v[i][j];
+        }
     }
 
     vec3 identity() {
-        for (int i = 0; i < 3; i++)  vec[i] = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 1; j++)
+                vec[i][j] = 0;
+        }
     }
 };
 
 typedef struct vec1x3{
-	float vec[3];
-    float transpose[1][3];
+	float vec[1][3];
+    float transpose[3][1];
 
-    vec1x3(float v[3]) {
-        for (int i = 0; i < 3; i++) vec[i] = v[i];
+    vec1x3(float v[1][3]) {
+        for (int i = 0; i < 1; i++) {
+            for (int j = 0; j < 3; j++) vec[i][j] = v[i][j];
+        }
     }
 
-    vec3 identity() {
-        for (int i = 0; i < 3; i++)  vec[i] = 0;
+    vec1x3 identity() {
+        for (int i = 0; i < 1; i++) {
+            for (int j = 0; j < 3; j++)
+                vec[i][j] = 0;
+        }
     }
+
 };
 
 typedef struct vec4{
-	float vec[4];
+	float vec[4][1];
     float transpose[1][4];
 
-    vec4(float v[4]) {
-        for (int i = 0; i < 4; i++) vec[i] = v[i];
+    vec4(float v[4][1]) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 1; j++) vec[i][j] = v[i][j];
+        }
     }
 
-    vec3 identity() {
-        for (int i = 0; i < 4; i++)  vec[i] = 0;
+    vec4 identity() {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 1; j++)
+                vec[i][j] = 0;
+        }
     }
+
 };
 
 typedef struct vec1x4{
-    float vec[4];
-    float transpose[1][4];
+    float vec[1][4];
+    float transpose[4][1];
 
-    vec1x4(float v[4]) {
-        for (int i = 0; i < 4; i++) vec[i] = v[i];
+    vec1x4(float v[1][3]) {
+        for (int i = 0; i < 1; i++) {
+            for (int j = 0; j < 4; j++) vec[i][j] = v[i][j];
+        }
     }
 
-    vec3 identity() {
-        for (int i = 0; i < 4; i++)  vec[i] = 0;
+    vec1x4 identity() {
+        for (int i = 0; i < 1; i++) {
+            for (int j = 0; j < 4; j++)
+                vec[i][j] = 0;
+        }
     }
+
 };
 
