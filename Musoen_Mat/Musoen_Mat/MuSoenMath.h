@@ -12,6 +12,16 @@ typedef struct mat3 {   // 2차원 행렬 구현된 자료구조
         }
     }
 
+    mat3() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i == j) mat[i][j] = 1;
+                else mat[i][j] = 0;
+            }
+        }
+    }
+
+
     mat3 operator*(mat3& aa) { // 행렬 곱하기 오버로딩
         mat3 matR(new float[3][3]{  });
         // 행렬의 곱 결과를 받는 변수
@@ -32,6 +42,8 @@ typedef struct vec3 {   // 2차원 좌표 + 동차좌표 구현된 자료구조
     {
         for (int i = 0; i < 3; i++) vec[i] = v[i];
     }
+
+    vec3() { for (int i = 0; i < 3; i++)  vec[i] = 0; }
 
     vec3 operator*(mat3& aa) { // 좌표와 행렬의 곱 오버로딩
         vec3 vecR(new float[3]{ 0, 0, 0 });

@@ -81,8 +81,8 @@ void Init()
     for (float theta = 0; theta < 360; theta += 72)
     {
 
-        star[i].pos.vec[0] = -(float)sin(PI * (theta)) * 0.5f;
-        star[i].pos.vec[1] = (float)cos(PI * (theta)) * 0.5f;
+        star[i].pos.vec[0] = -(float)sin(PI * theta / 180) * 0.5f;
+        star[i].pos.vec[1] = (float)cos(PI * theta / 180) * 0.5f;
         star[i].pos.vec[2] = 1.0f;
 
         star[i].r = 0.3f;
@@ -99,8 +99,8 @@ void Init()
     // 원 생성
     for (int theta = 0; theta < 360; theta++)
     {
-        circle[theta].pos.vec[0] = -(float)sin(PI * (theta)) * 0.5;
-        circle[theta].pos.vec[1] = (float)cos(PI * (theta)) * 0.5;
+        circle[theta].pos.vec[0] = -(float)sin(PI * theta / 180) * 0.5;
+        circle[theta].pos.vec[1] = (float)cos(PI * theta / 180) * 0.5;
         circle[theta].pos.vec[2] = 1.0f;
 
         circle[theta].r = 0.3f;
@@ -112,12 +112,6 @@ void Init()
     }
 
     
-    //트랜스폼 초기화 (기본형 제공)
-    mat3 Translate(new float[3][3]{ { 1,0,0 }, {0, 1, 0}, {0, 0, 1} });
-
-    mat3 Rotate(new float[3][3]{ {1, 0, 0}, {0, 1, 0}, {0, 0, 1} });
-
-    mat3 Scale(new float[3][3]{ { 1,0,0 }, {0, 1, 0}, {0, 0, 1} });
 
 }
 
@@ -139,8 +133,8 @@ void Update()
         );
 
         mat3 Rotate(new float[3][3]{
-            {(float)cos(PI*frame), -(float)sin(PI*frame), 0},
-            {(float)sin(PI*frame), (float)cos(PI*frame), 0 },
+            {(float)cos(PI*frame/180), -(float)sin(PI*frame/180), 0},
+            {(float)sin(PI*frame/180), (float)cos(PI*frame/180), 0 },
             {0, 0, 1 } }
         );
 
@@ -161,23 +155,22 @@ void Update()
             }
         }
 
-        mat3 Scale(new float[3][3]{
+        mat3 Scal(new float[3][3]{
             {Scale, 0, 0},
             {0, Scale, 0},
             {0, 0, 1} }
         );
 
         frame++;
-        //////////////////////////////////////////////////////////////////////////////////////////
 
         for (int i = 0; i < 360; i++)
         {
-            transformedCircle[i].pos = circle[i].pos * Translate * Rotate * Scale;
+            transformedCircle[i].pos = circle[i].pos * Rotate * Scal * Translate;
         }
 
         for (int i = 0; i < 5; i++)
         {
-            transformedStar[i].pos = star[i].pos * Translate * Rotate * Scale;
+            transformedStar[i].pos = star[i].pos * Rotate * Scal * Translate;
         }
 
 
